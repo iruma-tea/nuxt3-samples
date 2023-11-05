@@ -1,5 +1,22 @@
+<script setup lang="ts">
+const widthInit = Math.round(Math.random() * 10);
+const HeightInit = Math.round(Math.random() * 10);
+const rectangle = reactive({
+  width: widthInit,
+  height: HeightInit
+});
+const area = computed(
+  ():number => {
+    return rectangle.width * rectangle.height;
+  }
+);
+setInterval(
+  ():void => {
+    rectangle.width = Math.round(Math.random() * 10);
+    rectangle.height = Math.round(Math.random() * 10);
+  }, 1000
+);
+</script>
 <template>
-  <div>
-    <NuxtWelcome />
-  </div>
+  <p>縦{{ rectangle.height }}で横が{{ rectangle.width }}の長方形の面積は{{ area }}</p>
 </template>
